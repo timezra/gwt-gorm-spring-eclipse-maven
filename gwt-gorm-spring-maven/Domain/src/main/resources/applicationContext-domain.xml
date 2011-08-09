@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:gorm="http://grails.org/schema/gorm" xmlns:util="http://www.springframework.org/schema/util"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xsi:schemaLocation="http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd 
+                        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+                        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd 
+                        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+                        http://grails.org/schema/gorm http://grails.org/schema/gorm/gorm.xsd">
+
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+        <property name="driverClassName" value="org.h2.Driver" />
+        <property name="url" value="jdbc:h2:mem:grailsDB" />
+        <property name="username" value="sa" />
+        <property name="password" value="" />
+    </bean>
+
+    <bean id="messageSource"
+        class="org.springframework.context.support.ResourceBundleMessageSource">
+        <property name="basename" value="messages" />
+    </bean>
+
+    <gorm:sessionFactory base-package="timezra.blog.gorm.domain"
+        data-source-ref="dataSource" message-source-ref="messageSource">
+        <property name="hibernateProperties">
+            <util:map>
+                <entry key="hibernate.hbm2ddl.auto" value="update" />
+            </util:map>
+        </property>
+        <property name="entityInterceptor">
+            <bean class="timezra.blog.domain.GormInterceptor" />
+        </property>
+    </gorm:sessionFactory>
+
+    <context:annotation-config />
+
+    <context:mbean-export />
+
+    <tx:annotation-driven />
+
+    <bean name="hubbub:type=HibernateStatistics" class="org.hibernate.jmx.StatisticsService">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+
+</beans>
