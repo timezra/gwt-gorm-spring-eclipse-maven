@@ -16,6 +16,33 @@
 				<groupId>org.codehaus.gmaven</groupId>
 				<artifactId>gmaven-plugin</artifactId>
 				<version>1.3</version>
+				<dependencies>
+					<dependency>
+						<groupId>org.codehaus.gmaven.runtime</groupId>
+						<artifactId>gmaven-runtime-1.7</artifactId>
+						<version>1.3</version>
+					</dependency>
+					<dependency>
+						<groupId>org.grails</groupId>
+						<artifactId>grails-bootstrap</artifactId>
+						<version>1.3.7</version>
+					</dependency>
+					<dependency>
+						<groupId>org.springframework</groupId>
+						<artifactId>spring-core</artifactId>
+						<version>3.0.5.RELEASE</version>
+					</dependency>
+					<dependency>
+						<groupId>org.springframework</groupId>
+						<artifactId>spring-context</artifactId>
+						<version>3.0.5.RELEASE</version>
+					</dependency>
+					<dependency>
+						<groupId>org.springframework</groupId>
+						<artifactId>spring-web</artifactId>
+						<version>3.0.5.RELEASE</version>
+					</dependency>
+				</dependencies>
 				<executions>
 					<execution>
 						<goals>
@@ -30,11 +57,13 @@
 		</plugins>
 	</build>
 	<dependencies>
+	<!--
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-jmx</artifactId>
 			<version>3.5.6-Final</version>
 		</dependency>
+    -->
 		<dependency>
 			<groupId>org.grails</groupId>
 			<artifactId>grails-gorm</artifactId>
@@ -50,6 +79,12 @@
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
+				<groupId>org.codehaus.groovy</groupId>
+				<artifactId>groovy-all</artifactId>
+				<version>1.8.1</version>
+			</dependency>
+	<!--
+			<dependency>
 				<groupId>org.hibernate</groupId>
 				<artifactId>hibernate-core</artifactId>
 				<version>3.6.6.Final</version>
@@ -64,6 +99,7 @@
 				<artifactId>hibernate-commons-annotations</artifactId>
 				<version>3.3.0.ga</version>
 			</dependency>
+    -->
 		</dependencies>
 	</dependencyManagement>
 </project>
