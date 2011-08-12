@@ -1,0 +1,24 @@
+0.  Point the eclipse.ini file to JDK 7 with a configuration similar to this:
+    -vm
+    C:/programming/java/jdk1.7.0/bin
+    -vmargs
+    -Xms512m
+    -Xmx1028m
+    -Djava.util.Arrays.useLegacyMergeSort=true
+1.  Install m2eclipse, m2eclipse extras and the eclipse gwt plugins:
+    http://m2eclipse.sonatype.org/sites/m2e
+    http://m2eclipse.sonatype.org/sites/m2e-extras
+    http://dl.google.com/eclipse/plugin/3.7
+    http://dist.springsource.org/release/GRECLIPSE/e3.7/
+    (http://dist.springsource.com/release/TOOLS/update/e3.7)
+    (http://dist.springsource.com/release/TOOLS/composite/e3.7)
+2.  Create parent maven project in eclipse
+3.  Set maven.compiler.source and maven.compiler.target in the pom.xml to 1.7
+4.  Create gwt subproject using the gwt-maven-archetype
+5.  Route requests through the Spring DispatcherServlet instead of through the GWT servlets directly in the web.xml
+6.  Add @Controller and @RequestMapping annotations to the servlet impl and make your servlet implement ServletContextAware
+7.  Set GWT dependency and plugin versions the same in the pom.xml
+8.  Enable App Engine and set the WAR directory
+9.  Copy the <>.gwt.xml file to the src/main/java/<> directory so it can be picked up by the run configuration 
+10. For JDK 7, set the Java vm arg "-XX:-UseSplitVerifier" in the GAE Web Application run configuration 
+11. Add the gorm.xsd to the XML schema catalog
