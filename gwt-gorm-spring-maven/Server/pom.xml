@@ -12,6 +12,11 @@
 	<dependencies>
         <dependency>
             <groupId>timezra.blog</groupId>
+            <artifactId>Domain</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>timezra.blog</groupId>
             <artifactId>Shared</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
